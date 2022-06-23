@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 COLORS:
 
@@ -7,19 +6,26 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+$color-primary: #7ed56f;
+$color-primary-light: #55c57a;
+$color-primary-dark: #28b485;
+
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /* 
     simula 10px para que las medidas rem sean mas faciles de leer, el valor de 62.5% es tomar 10px y dividirlo por el tamaño de letra por defecto del navegador (16px) 
     10 / 16 = 0.625
   */
-  font-size: 62.5%; }
+  font-size: 62.5%; 
+}
 
 body {
   font-family: "Lato", sans-serif;
@@ -28,14 +34,20 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image:
+    linear-gradient(to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)),
+    url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
+
   /* 
         clip path es para decirle que porcion de imagen es visible, 
         acepta un objeto polygon, el cual tiene las coordenadas de la
@@ -52,78 +64,103 @@ body {
         pagina para generar estas figuras geometricas:
         https://bennettfeely.com/clippy/ 
     */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
 
 .header__logo-box {
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 .header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
   color: #FFF;
   text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+}
 
 .heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   animation-name: moveInLeft;
   animation-duration: 1s;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-out; 
+
   /* 
     animation-delay: 1s; // cuanto demora en empezar la animacion
     animation-iteration-count: 3; // cuantas veces repetir la animacion
     animation-timing-function: ease-in;  // como se aplica la animación, empieza lento termina rapido por ejemplo.
-  */ }
+  */
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out;
-  /* forma corta de escribir la animacion */ }
+
+  animation: moveInRight 1s ease-out; /* forma corta de escribir la animacion */
+}
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
+
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translateY(0); } }
+    transform: translateY(0);
+  }
+}
 
 .btn:link,
 .btn:visited {
@@ -134,19 +171,23 @@ body {
   display: inline-block;
   border-radius: 10rem;
   transition: all .2s;
-  position: relative; }
+  position: relative;
+}
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
 
 .btn--white {
   background-color: #FFF;
-  color: #777; }
+  color: #777;
+}
 
 .btn::after {
   content: '';
@@ -158,16 +199,20 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: white; }
+  background-color: white;
+}
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   /* aplica las propiedades definidas en el 0% de la animacion antes que ocurra, en este caso previene que el boton sea visible antes de aplicar la animacion inicial  */
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}

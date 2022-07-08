@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* 
+    simula 10px para que las medidas rem sean mas faciles de leer, el valor de 62.5% es tomar 10px y dividirlo por el tamaño de letra por defecto del navegador (16px) 
+    10 / 16 = 0.625
+
+    - define a cuanto equivale 1 rem
+  */
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

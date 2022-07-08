@@ -1,0 +1,47 @@
+.header {
+  height: 95vh;
+  background-image:
+    linear-gradient(to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  /* 
+          clip path es para decirle que porcion de imagen es visible, 
+          acepta un objeto polygon, el cual tiene las coordenadas de la
+          figura que se desea dibujar, en este caso es un cuadrado pero 
+          con el border derecho inferior recortado.
+          las coordenadas van en el orden de las manecillas del reloj
+          en este caso:
+          (0 0) -> x: 0, y:0
+          (0 0) -> x: 100%, y:0
+          (0 0) -> x: 100%, y: 80%
+          (0 0) -> x: 0, y: 100%
+      */
+  /* 
+          pagina para generar estas figuras geometricas:
+          https://bennettfeely.com/clippy/ 
+      */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
